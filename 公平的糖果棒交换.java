@@ -57,6 +57,7 @@ public class 公平的糖果棒交换 {
         }
         return null;
     }
+    // 使用数组来保留值 已知n的大小的时候可用
 
     public static void main(String[] args) {
 
