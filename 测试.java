@@ -1,40 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class 测试 {
     public static void main(String[] args) {
-        int[] a = {};
-        int x ,d , l = 0;
+        int[] a = new int[10000000];
+        for (int i = 0; i < 10000000; i++) {
+            a[i] = i;
+        }
+        Stopwatch stopwatch1 = new Stopwatch();
+        int sum = 0;
+        for (int i : a) {
+            sum += i;
+        }
+        double res1 = (double) sum / a.length;
+        System.out.println("stopwatch1 " + stopwatch1.elapsedTime());
+
+        Stopwatch stopwatch2 = new Stopwatch();
+        double res2 = Arrays.stream(a).average().getAsDouble();
+        System.out.println("stopwatch2 " + stopwatch2.elapsedTime());
     }
-    static void staircase(int n) {
-        for (int i = 1; i <= n; i++) {
-            StringBuilder x = new StringBuilder();
-            for (int j = i; j > 0; j--) {
-                x.append("*");
-            }
-            System.out.println(x);
-        }
+}
+
+class Stopwatch {
+    private final long start;
+
+    public Stopwatch() {
+        start = System.currentTimeMillis();
     }
-    static void plusMinus(int[] arr) {
-        double length = (double)arr.length;
-        int positives = 0, negatives = 0, zeros = 0;
-        for (int j : arr) {
-            if (j > 0) positives++;
-            if (j < 0) negatives++;
-            if (j == 0) zeros++;
-        }
-        System.out.println(positives / length);
-        System.out.println(negatives / length);
-        System.out.println(zeros / length);
-    }
-    private static String desensitizedIdNumber(String idNumber) {
-        if (idNumber.length() == 15) {
-            idNumber = idNumber.replaceAll("(\\w{6})\\w*(\\w{3})", "$1******$2");
-        }
-        if (idNumber.length() == 18) {
-            idNumber = idNumber.replaceAll("(\\w{6})\\w*(\\w{3})", "$1*********$2");
-        }
-        return idNumber;
+
+    public double elapsedTime() {
+        long now = System.currentTimeMillis();
+        return (now - start);
     }
 }
