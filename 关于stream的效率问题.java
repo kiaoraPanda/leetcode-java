@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class 测试 {
+public class 关于stream的效率问题 {
     public static void main(String[] args) {
 //        for (int j = 1; j < 10; j++) {
 //            int[] a = new int[(int) (1000 * Math.pow(10, j))];
@@ -128,18 +128,5 @@ public class 测试 {
             System.out.println("数量级为1000 * 10^" + q + " 平均时间差为 " + average);
         }
 
-    }
-}
-
-class Stopwatch {
-    private final long start;
-
-    public Stopwatch() {
-        start = System.currentTimeMillis();
-    }
-
-    public double elapsedTime() {
-        long now = System.currentTimeMillis();
-        return (now - start);
     }
 }
